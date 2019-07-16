@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "aiger_sat"
+version = "0.1.0"
+description = ""
+authors = ["Marcell Vazquez-Chanlatte <mvc@linux.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+py-aiger = "^3.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
