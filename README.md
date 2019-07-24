@@ -30,9 +30,15 @@ run:
 
 # Usage
 
-The primary entry point for `aiger_sat` is the `SolverWrapper` object
-which is a thin wrapper around a `pysat` solver.
+`aiger_sat` has two seperate API's. The first, called the Object API,
+centers around the `SolverWrapper` object - a thin wrapper around a
+`pysat` solver. The second is a Function API which exposes 4 functions
+`solve`, `is_sat`, `is_valid`, and `are_equiv`. The function API is
+primarily useful for simple 1-off SAT instances, where as the object
+API is more useful when incremental solves are needed, or the
+underlying `pysat` solver must be exposed.
 
+## Object API
 
 ```python
 from aiger_sat import SolverWrapper
@@ -73,4 +79,23 @@ assert not solver.unsolved
 
 core = solver.get_unsat_core()
 assert core == {'x': False, 'z': True}
+```
+
+## Function API
+
+```python
+import aiger
+import aiger_sat
+
+x, y, z = map(aiger.atom, ['x', 'y', 'z'])
+assert aiger_sat.is_sat(x & y & z)
+
+model = aiger_sat.solve(x & y & z)
+assert model == {'x': True, 'y': True, 'z': True}
+
+assert aiger_sat.is_valid(aiger.atom(True))
+
+expr1 = x & y
+expr2 = x & y & (z | ~z)
+assert aiger_sat.are_equiv(expr1, expr2)
 ```
