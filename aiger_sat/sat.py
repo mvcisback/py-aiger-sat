@@ -1,6 +1,7 @@
 from functools import wraps
 from typing import TypeVar, Set
 
+import aiger
 import attr
 from aiger_cnf import aig2cnf
 from pysat.solvers import Glucose4
@@ -68,3 +69,29 @@ class SolverWrapper:
     @_require_solved
     def get_unsat_core(self):
         return self._translate(self.solver.get_core())
+
+
+def _solve(expr, method, engine):
+    solver = SolverWrapper(engine())
+    solver.add_expr(expr)
+    return method(solver)
+
+
+def solve(expr, *, engine=Glucose4):
+    return _solve(expr, SolverWrapper.get_model, engine=engine)
+
+
+def is_sat(expr, *, engine=Glucose4):
+    return _solve(expr, SolverWrapper.is_sat, engine=engine)
+
+
+def is_valid(expr, *, engine=Glucose4):
+    return not is_sat(~expr, engine=engine)
+
+
+def are_equiv(expr1, expr2, *, engine=Glucose4):
+    # Make sure they're expressions.
+    assert len(expr1.aig.outputs) == len(expr2.aig.outputs) == 1
+    expr1, expr2 = map(lambda e: aiger.BoolExpr(e.aig), (expr1, expr2))
+
+    return is_valid(expr1 == expr2)
