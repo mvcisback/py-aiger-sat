@@ -1,7 +1,34 @@
 # py-aiger-sat
 Pythonic interface between AIGs and SAT solvers.
 
-## Usage
+[![Build Status](https://cloud.drone.io/api/badges/mvcisback/py-aiger-sat/status.svg)](https://cloud.drone.io/mvcisback/py-aiger-sat)
+[![codecov](https://codecov.io/gh/mvcisback/py-aiger-sat/branch/master/graph/badge.svg)](https://codecov.io/gh/mvcisback/py-aiger-sat)
+[![PyPI version](https://badge.fury.io/py/py-aiger-sat.svg)](https://badge.fury.io/py/py-iager-sat)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [Installation](#installation)
+- [Usage](#usage)
+
+<!-- markdown-toc end -->
+
+
+# Installation
+
+If you just need to use `aiger_sat`, you can just run:
+
+`$ pip install py-aiger-sat`
+
+For developers, note that this project uses the
+[poetry](https://poetry.eustace.io/) python package/dependency
+management tool. Please familarize yourself with it and then
+run:
+
+`$ poetry install`
+
+# Usage
 
 The primary entry point for `aiger_sat` is the `SolverWrapper` object
 which is a thin wrapper around a `pysat` solver.
