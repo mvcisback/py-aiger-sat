@@ -22,9 +22,9 @@ def _require_solved(func):
 
 @attr.s(auto_attribs=True)
 class SolverWrapper:
+    solver: Solver = attr.ib(factory=Glucose4)
     max_var: int = 0
     unsolved: bool = True
-    solver: Solver = attr.ib(factory=Glucose4)
     inputs: Set[str] = attr.ib(factory=set)
     sym_table: bidict = attr.ib(factory=bidict)
 
