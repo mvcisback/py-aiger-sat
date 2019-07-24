@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "aiger_sat"
+name = "py-aiger-sat"
 readme="README.md"
 version = "0.1.0"
 description = "Pythonic interface between AIGs and SAT solvers."
