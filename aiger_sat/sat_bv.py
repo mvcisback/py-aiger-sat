@@ -1,7 +1,7 @@
 try:
     import aiger_bv
-except ImportError:
-    raise ImportError("Please install py-aiger-bv")
+except ModuleNotFoundError:
+    raise ModuleNotFoundError("Please install with bitvector option.")
 
 import attr
 from pysat.solvers import Glucose4

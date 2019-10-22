@@ -101,3 +101,35 @@ assert aiger_sat.are_equiv(expr1, expr2)
 ```
 
 ## BitVector Support
+
+`py-aiger-sat` also natively supports the `py-aiger-bv` bitvector
+library.
+
+To enable this support, make sure that `py-aiger-bv` is installed,
+either manually:
+
+`$ pip install py-aiger-bv`
+
+or by installing `py-aiger-sat` with the `bitvector` option:
+
+`$ pip install py-aiger-sat[bitvector]` or `$ poetry install --extras=bitvector`
+
+Usage is analogous to the non-bitvector usage.
+
+```python
+from aiger_bv import atom
+from aiger_sat import sat_bv
+
+# Object API
+expr = atom(4, 'x') & atom(4, 'y') < 2
+f = sat_bv.SolverBVWrapper()
+f.add_expr(expr)
+
+model = f.get_model()
+
+# Function API.
+model = sat_bv.solve(expr)
+
+print(model)
+# {'x': (False, False, True, True), 'y': (False, False, True, True)}
+```
