@@ -445,8 +445,11 @@ version = "0.6.0"
 [package.dependencies]
 more-itertools = "*"
 
+[extras]
+bitvector = ["py-aiger-bv"]
+
 [metadata]
-content-hash = "58bab0448745f6fc23bd02c6e7a436cc82ca19d43aa82c0f3036d16bc9f763da"
+content-hash = "c49e0496610232495c5d35e71d20c06f3707a9a0dc89a92e7157667b24f1f95b"
 python-versions = "^3.6"
 
 [metadata.hashes]
