@@ -99,3 +99,5 @@ expr1 = x & y
 expr2 = x & y & (z | ~z)
 assert aiger_sat.are_equiv(expr1, expr2)
 ```
+
+## BitVector Support

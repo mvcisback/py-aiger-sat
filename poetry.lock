@@ -214,6 +214,20 @@ toposort = ">=1.5,<2.0"
 
 [[package]]
 category = "main"
+description = "A python library for manipulating sequential and-inverter gates."
+name = "py-aiger-bv"
+optional = true
+python-versions = ">=3.6,<4.0"
+version = "1.0.1"
+
+[package.dependencies]
+attrs = ">=19.1,<20.0"
+funcy = ">=1.12,<2.0"
+py-aiger = ">=3.3.5,<4.0.0"
+pyrsistent = ">=0.15.4,<0.16.0"
+
+[[package]]
+category = "main"
 description = "Python library to convert between AIGER and CNF"
 name = "py-aiger-cnf"
 optional = false
@@ -432,7 +446,7 @@ version = "0.6.0"
 more-itertools = "*"
 
 [metadata]
-content-hash = "a9062a2381cbde16c09248a86e98a3b540ff29f11d7610731a99b432dfb16da1"
+content-hash = "58bab0448745f6fc23bd02c6e7a436cc82ca19d43aa82c0f3036d16bc9f763da"
 python-versions = "^3.6"
 
 [metadata.hashes]
@@ -458,6 +472,7 @@ parsimonious = ["3add338892d580e0cb3b1a39e4a1b427ff9f687858fdd61097053742391a9f6
 pluggy = ["0db4b7601aae1d35b4a033282da476845aa19185c1e6964b25cf324b5e4ec3e6", "fa5fa1622fa6dd5c030e9cad086fa19ef6a0cf6d7a2d12318e10cb49d6d68f34"]
 py = ["64f65755aee5b381cea27766a3a147c3f15b9b6b9ac88676de66ba2ae36793fa", "dc639b046a6e2cff5bbe40194ad65936d6ba360b52b3c3fe1d08a82dd50b5e53"]
 py-aiger = ["1ee30f346a81ee20a3681f929af38d10805f8dd5c4ce84c33706efeab4045525", "561f7749621c1320ba12b9c868ec50dd94901457a2bffe31049926afb6935d62"]
+py-aiger-bv = ["0461b00c0c0efa67b693a1413ad817805561576833c8a5c7f37109ab083b9d45", "1a60069a559134fae7e3ff8888b490e180bc71d65526e275aa8e84adb1ce2491"]
 py-aiger-cnf = ["29e79a6b4e33559116cbc965301220a81d4162a1b7a1f1b8e19b32599ea82bd0", "9e99f22c82a078e4367748f29bbcba33794035cc723d8a714e66713a09400836"]
 pycodestyle = ["95a2219d12372f05704562a14ec30bc76b05a5b297b21a5dfe3f6fac3491ae56", "e40a936c9a450ad81df37f549d676d127b1b66000a6c500caa2b085bc0ca976c"]
 pyflakes = ["17dbeb2e3f4d772725c777fabc446d5634d1038f234e77343108ce445ea69ce0", "d976835886f8c5b31d47970ed689944a0262b5f3afa00a5a7b4dc81e5449f8a2"]
