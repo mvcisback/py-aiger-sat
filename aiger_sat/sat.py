@@ -30,6 +30,7 @@ class SolverWrapper:
     sym_table: bidict = attr.ib(factory=bidict)
 
     def add_expr(self, expr):
+        expr = aiger.BoolExpr(expr.aig)
         self.unsolved = True
         self.inputs |= expr.inputs
         cnf = aig2cnf(expr, symbol_table=self.sym_table, max_var=self.max_var)
@@ -71,14 +72,14 @@ class SolverWrapper:
         return self._translate(self.solver.get_core())
 
 
-def _solve(expr, method, engine):
-    solver = SolverWrapper(engine())
+def _solve(expr, method, engine, wrapper=SolverWrapper):
+    solver = wrapper(engine())
     solver.add_expr(expr)
     return method(solver)
 
 
-def solve(expr, *, engine=Glucose4):
-    return _solve(expr, SolverWrapper.get_model, engine=engine)
+def solve(expr, *, engine=Glucose4, wrapper=SolverWrapper):
+    return _solve(expr, wrapper.get_model, engine=engine, wrapper=wrapper)
 
 
 def is_sat(expr, *, engine=Glucose4):
