@@ -1,8 +1,9 @@
 from functools import wraps
-from typing import TypeVar, Set
+from typing import Callable, Hashable, TypeVar, Set
 
 import aiger
 import attr
+import funcy as fn
 from aiger_cnf import aig2cnf
 from pysat.solvers import Glucose4
 from bidict import bidict
@@ -21,22 +22,34 @@ def _require_solved(func):
     return decorated
 
 
+def id_pool_factory():
+    max_var = 0
+
+    @fn.memoize
+    def _fresh(val):
+        nonlocal max_var
+        max_var += 1
+        return max_var
+
+    return _fresh
+
+
 @attr.s(auto_attribs=True)
 class SolverWrapper:
     solver: Solver = attr.ib(factory=Glucose4)
-    max_var: int = 0
     unsolved: bool = True
     inputs: Set[str] = attr.ib(factory=set)
     sym_table: bidict = attr.ib(factory=bidict)
+    _id_pool: Callable[[Hashable], int] = attr.ib(factory=id_pool_factory)
 
     def add_expr(self, expr):
         expr = aiger.BoolExpr(expr.aig)
         self.unsolved = True
         self.inputs |= expr.inputs
-        cnf = aig2cnf(expr, symbol_table=self.sym_table, max_var=self.max_var)
-        self.max_var, self.sym_table = cnf.max_var, cnf.symbol_table
+        cnf = aig2cnf(expr, fresh=self._id_pool)
         for clause in cnf.clauses:
             self.solver.add_clause(clause)
+        self.sym_table.update(cnf.input2lit)
 
     def is_sat(self, assumptions=None):
         if assumptions is None:

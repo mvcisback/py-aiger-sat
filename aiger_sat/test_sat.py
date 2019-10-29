@@ -11,7 +11,6 @@ def test_smoke():
     expr = (x & y) | ~z
     solver.add_expr(expr)
     assert solver.inputs == {'x', 'y', 'z'}
-    assert solver.max_var > 3
     assert len(solver.sym_table) == 3
 
     assert all(v in solver.sym_table for v in 'xyz')

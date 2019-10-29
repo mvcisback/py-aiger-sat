@@ -13,9 +13,9 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.6"
 python-sat = {version = "^0.1.4.dev13",allows-prereleases = true}
-py-aiger = "^3.3.6"
-py-aiger-cnf = "^1.0.0"
-attrs = "^19.1"
+py-aiger = "^3.5.0"
+py-aiger-cnf = "^2.0.0"
+attrs = "^19.3"
 py-aiger-bv = {version = "^1.0", optional = true}
 [tool.poetry.dev-dependencies]
 codecov = "^2.0"
