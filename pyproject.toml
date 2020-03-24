@@ -12,7 +12,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-python-sat = {version = "^0.1.4.dev13",allows-prereleases = true}
+python-sat = {version = "^0.1.4.dev13", allow-prereleases = true}
 py-aiger = "^4.0.0"
 py-aiger-cnf = "^3.0.0"
 attrs = "^19.3"
@@ -24,7 +24,6 @@ codecov = "^2.0"
 pytest = "^5.0"
 pytest-cov = "^2.7"
 pytest-flake8 = "^1.0"
-pytest-sugar = "^0.9.2"
 pytest-xdist = "^1.29"
 
 
