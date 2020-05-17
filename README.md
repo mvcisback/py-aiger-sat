@@ -45,7 +45,7 @@ from aiger_sat import SolverWrapper
 
 solver = SolverWrapper()  # defaults to Glucose4
 
-from pysat.solver import Glucose3
+from pysat.solvers import Glucose3
 solver2 = SolverWrapper(solver=Glucose3)
 ```
 
