@@ -74,9 +74,6 @@ class SolverWrapper:
 
     @_require_solved
     def get_model(self):
-        if self.unsolved:
-            self.solver.solve()
-
         model = self.solver.get_model()
         return self._translate(model)
 
