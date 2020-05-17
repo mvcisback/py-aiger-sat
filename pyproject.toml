@@ -11,19 +11,20 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-python-sat = {version = "^0.1.4.dev13",allows-prereleases = true}
-py-aiger = "^3.5.0"
-py-aiger-cnf = "^2.0.0"
+python = "^3.7"
 attrs = "^19.3"
-py-aiger-bv = {version = "^1.0", optional = true}
+py-aiger = "^6.0.0"
+py-aiger-bv = {version = "^4.0.0", optional = true}
+py-aiger-cnf = "^5.0.0"
+python-sat = {version = "0.1.5.dev13",allow-prereleases = true}
+
 [tool.poetry.dev-dependencies]
 codecov = "^2.0"
 pytest = "^5.0"
 pytest-cov = "^2.7"
 pytest-flake8 = "^1.0"
-pytest-sugar = "^0.9.2"
 pytest-xdist = "^1.29"
+py-aiger-bv = "^4.0.0"
 
 
 [tool.poetry.extras]
