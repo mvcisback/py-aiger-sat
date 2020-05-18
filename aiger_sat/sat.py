@@ -79,7 +79,8 @@ class SolverWrapper:
 
     @_require_solved
     def get_unsat_core(self):
-        return self._translate(self.solver.get_core())
+        core = self._translate(self.solver.get_core())
+        return {} if (core is None) else core
 
 
 def _solve(expr, method, engine, wrapper=SolverWrapper):

@@ -35,6 +35,16 @@ def test_smoke():
     assert core == {'x': False, 'z': True}
 
 
+def test_empty_unsat_core():
+    x = aiger.atom('x')
+
+    solver = SolverWrapper()
+    solver.add_expr(x & ~x)
+
+    assert solver.get_model() is None
+    assert solver.get_unsat_core() == {}
+
+
 def test_solve():
     x, y, z = map(aiger.atom, ['x', 'y', 'z'])
     model = aiger_sat.solve(x & y & z)
