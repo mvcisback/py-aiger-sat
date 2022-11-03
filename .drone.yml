@@ -10,5 +10,4 @@ steps:
   commands:
   - pip install poetry
   - poetry install --extras=bitvector
-  - poetry run pytest --flake8 --cov=aiger_sat -nauto
-  - poetry run codecov
+  - poetry run pytest -nauto
