@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "py-aiger-sat"
 readme="README.md"
-version = "3.0.7"
+version = "3.0.8"
 description = "Pythonic interface between AIGs and SAT solvers."
 authors = ["Marcell Vazquez-Chanlatte <mvc@linux.com>"]
 repository = "https://github.com/mvcisback/py-aiger-sat"
