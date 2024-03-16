@@ -15,7 +15,7 @@ python = "^3.7"
 py-aiger = "^6.0.0"
 py-aiger-bv = {version = "^4.0.0", optional = true}
 py-aiger-cnf = "^5.0.0"
-python-sat = {version = "0.1.6.*", allow-prereleases = true}
+python-sat = {version = "1.*", allow-prereleases = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.0"
